@@ -1,0 +1,132 @@
+---
+import stack from "../data/stack.json";
+---
+
+<section id="stack">
+  <h2>Stack Tecnol&oacute;gico</h2>
+  
+  <div class="stack-grid">
+    {stack.map((group) => (
+      <div class="stack-card">
+        <h3>{group.category}</h3>
+        <div class="pills">
+          {group.skills.map((skill) => (
+            <span class="pill">{skill}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <style>
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--color-primary);
+      opacity: 0.2;
+      z-index: -1;
+      transform: skewX(-10deg);
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .stack-card {
+      background: var(--color-background-off);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Gradient Border Effect via pseudo-element */
+    .stack-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      padding: 2px; /* Border width */
+      background: var(--gradient-primary);
+      -webkit-mask: 
+         linear-gradient(#fff 0 0) content-box, 
+         linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Card background lift on hover */
+    .stack-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -10px rgba(var(--color-primary-rgb), 0.3); /* Glow effect */
+      border-color: transparent; /* Let gradient partial show or rely on mask */
+    }
+    
+    .stack-card:hover::before {
+      opacity: 1;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      font-size: 0.85rem;
+      background: rgba(var(--color-text-rgb), 0.05);
+      color: var(--color-text);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: 1px solid var(--color-border);
+    }
+
+    .stack-card:hover .pill {
+      background: var(--color-background);
+      border-color: rgba(var(--color-primary-rgb), 0.2);
+    }
+
+    .pill:hover {
+      background: rgba(var(--color-primary-rgb), 0.1) !important;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      transform: scale(1.05);
+    }
+  </style>
+</section>

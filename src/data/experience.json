@@ -1,0 +1,23 @@
+[
+  {
+    "company": "AIOTEK",
+    "role": "Ssr. Node.js Developer",
+    "period": "Septiembre 2023 - Presente",
+    "points": [
+      "Dise&ntilde;o e implementaci&oacute;n de APIs RESTful de alto rendimiento utilizando NestJS.",
+      "Automatizaci&oacute;n de integraciones con Marketplaces y ERPs.",
+      "Optimizaci&oacute;n de consultas complejas en PostgreSQL con Sequelize.",
+      "Implementaci&oacute;n de Clean Architecture y documentaci&oacute;n con Swagger."
+    ]
+  },
+  {
+    "company": "QWAVEE - IT",
+    "role": "Desarrollador Node.js | NestJS",
+    "period": "Noviembre 2022 - Septiembre 2023",
+    "points": [
+      "Migraci&oacute;n de una calculadora ganadera a NestJS para mejorar la mantenibilidad del sistema.",
+      "Implementaci&oacute;n de infraestructura Serverless con AWS Lambda y API Gateway.",
+      "Automatizaci&oacute;n de c&aacute;lculos de emisiones con generaci&oacute;n de datos en formato JSON."
+    ]
+  }
+]

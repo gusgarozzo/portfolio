@@ -1,0 +1,286 @@
+<section class="hero">
+  <div class="container">
+    <div class="content">
+      <h1 class="name">
+        Gustavo<br />
+        <span class="gradient-text">Garozzo</span>
+      </h1>
+
+      <p class="role">
+        Backend Ssr. &mdash; Node.js, NestJS y APIs escalables
+      </p>
+
+      <nav class="links">
+        <a href="/cv.pdf" target="_blank" class="btn-primary">
+          Descargar CV
+        </a>
+        <a href="mailto:gustavogarozzo@gmail.com" class="link-item">Email</a>
+        <a href="https://github.com/gusgarozzo" target="_blank" class="link-item">GitHub</a>
+        <a href="https://linkedin.com/in/gusgarozzo" target="_blank" class="link-item">LinkedIn</a>
+      </nav>
+    </div>
+
+    <div class="hero-graphic">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+        <div class="terminal-body">
+          <div class="code-line">
+            <span class="keyword">const</span> <span class="variable">profile</span> <span class="operator">=</span> <span class="bracket">&#123;</span>
+          </div>
+          <div class="code-line indent">
+            <span class="key">name:</span> <span class="string">"Gustavo"</span><span class="comma">,</span>
+          </div>
+          <div class="code-line indent">
+            <span class="key">role:</span> <span class="string">"Backend Dev"</span><span class="comma">,</span>
+          </div>
+          <div class="code-line indent">
+            <span class="key">stack:</span> <span class="bracket">[</span>
+          </div>
+          <div class="code-line double-indent">
+            <span class="string">"Node.js"</span><span class="comma">,</span>
+          </div>
+          <div class="code-line double-indent">
+            <span class="string">"NestJS"</span><span class="comma">,</span>
+          </div>
+          <div class="code-line double-indent">
+            <span class="string">"PostgreSQL"</span>
+          </div>
+          <div class="code-line indent">
+            <span class="bracket">]</span><span class="comma">,</span>
+          </div>
+          <div class="code-line indent">
+             <span class="key">status:</span> <span class="string">"Ready for challenge"</span>
+          </div>
+          <div class="code-line">
+            <span class="bracket">&#125;;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="decoration"></div>
+
+  <style>
+    .hero {
+      padding: 4rem 0;
+      position: relative;
+      overflow: visible; /* Allow graphic to float freely if needed */
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .container {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+    }
+
+    .name {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+    
+    @media (min-width: 768px) {
+      .name {
+         font-size: 5rem;
+         margin-bottom: 2rem;
+      }
+    }
+
+    .role {
+      font-size: 1.25rem;
+      color: var(--color-muted);
+      margin-bottom: 2rem;
+      font-weight: 500;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+    
+    @media (min-width: 768px) {
+      .role {
+        font-size: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    .links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .link-item {
+      font-weight: 600;
+      color: var(--color-text);
+      position: relative;
+      text-decoration: none;
+    }
+
+    .link-item::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .link-item:hover {
+      color: var(--color-primary);
+    }
+
+    .link-item:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    
+    /* Graphic Styles */
+    .hero-graphic {
+      display: none;
+      justify-content: center;
+      perspective: 1000px;
+    }
+
+    @media (min-width: 900px) {
+      .hero-graphic {
+        display: flex;
+      }
+    }
+
+    .terminal-window {
+      background: rgba(var(--color-background-off), 0.7); /* Fallback */
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      font-family: 'Fira Code', monospace; /* Need a monospace font stack fallback */
+      font-size: 0.9rem;
+      transform: rotateY(-10deg) rotateX(5deg);
+      transition: transform 0.3s ease;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    :global([data-theme="light"]) .terminal-window {
+       background: rgba(255, 255, 255, 0.7);
+       border-color: rgba(0,0,0,0.1);
+       box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .terminal-window:hover {
+      transform: rotateY(0) rotateX(0);
+    }
+
+    .terminal-header {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+
+    .terminal-body {
+      color: #a9b7c6;
+    }
+    
+    :global([data-theme="light"]) .terminal-body {
+      color: #333;
+    }
+
+    .code-line {
+      line-height: 1.6;
+      font-family: monospace; /* Simple monospace fallback */
+    }
+
+    .indent { padding-left: 1.5rem; }
+    .double-indent { padding-left: 3rem; }
+
+    /* Syntax Highlighting */
+    .keyword { color: #cc7832; font-weight: bold; }
+    .variable { color: #a9b7c6; }
+    .operator { color: #a9b7c6; }
+    .bracket { color: #a9b7c6; }
+    .string { color: #6a8759; }
+    .key { color: #9876aa; }
+    .comma { color: #cc7832; }
+
+    /* Light Theme Syntax Overrides */
+    :global([data-theme="light"]) .keyword { color: #0033b3; }
+    :global([data-theme="light"]) .variable { color: #000; }
+    :global([data-theme="light"]) .operator { color: #000; }
+    :global([data-theme="light"]) .bracket { color: #000; }
+    :global([data-theme="light"]) .string { color: #067d17; }
+    :global([data-theme="light"]) .key { color: #660e7a; }
+    :global([data-theme="light"]) .comma { color: #000; }
+
+    .decoration {
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: var(--gradient-primary);
+      filter: blur(80px);
+      opacity: 0.2;
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotateY(-10deg) rotateX(5deg); }
+      50% { transform: translateY(-15px) rotateY(-10deg) rotateX(5deg); }
+      100% { transform: translateY(0px) rotateY(-10deg) rotateX(5deg); }
+    }
+    
+    /* Modify float for hover state to prevent conflict? 
+       Actually, hover overrides transform, so animation might look jerky on hover.
+       Let's pause animation on hover or wrap it. 
+       For simplicity, let's keep it simple. */
+       
+  </style>
+</section>

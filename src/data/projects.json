@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Product Monitor Extension",
+    "description": "Extensi&oacute;n de navegador para el monitoreo automatizado de precios y stock de productos en tiempo real.",
+    "tech": ["JavaScript", "Chrome API", "DOM Manipulation"],
+    "repoUrl": "https://github.com/gusgarozzo/offerWatchdog",
+    "demoUrl": "https://chromewebstore.google.com/detail/monitor-de-productos/gnloopghiogbfcnkakbbjmifhmldfjba?pli=1",
+    "highlight": "Soluci&oacute;n propia enfocada en la utilidad y automatizaci&oacute;n."
+  },
+  {
+    "title": "NestJS Scalable API Template",
+    "description": "API REST para obtener informaci&oacute;n meteorol&oacute;gica en tiempo real, construida con NestJS y TypeScript. Permite consultar el clima por ciudad y obtener datos detallados de temperatura, humedad, viento y condiciones atmosf&eacute;ricas.",
+    "tech": ["NestJS", "TypeScript", "PostgreSQL", "Docker"],
+    "repoUrl": "https://github.com/gusgarozzo/weather_api",
+    "demoUrl": null,
+    "highlight": "Demostraci&oacute;n de patrones de dise&ntilde;o y estructura backend profesional."
+  }
+]
