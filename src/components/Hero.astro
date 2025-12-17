@@ -27,37 +27,35 @@
           <div class="dot yellow"></div>
           <div class="dot green"></div>
         </div>
-        <div class="terminal-body">
-          <div class="code-line">
-            <span class="keyword">const</span> <span class="variable">profile</span> <span class="operator">=</span> <span class="bracket">&#123;</span>
-          </div>
-          <div class="code-line indent">
-            <span class="key">name:</span> <span class="string">"Gustavo"</span><span class="comma">,</span>
-          </div>
-          <div class="code-line indent">
-            <span class="key">role:</span> <span class="string">"Backend Dev"</span><span class="comma">,</span>
-          </div>
-          <div class="code-line indent">
-            <span class="key">stack:</span> <span class="bracket">[</span>
-          </div>
-          <div class="code-line double-indent">
-            <span class="string">"Node.js"</span><span class="comma">,</span>
-          </div>
-          <div class="code-line double-indent">
-            <span class="string">"NestJS"</span><span class="comma">,</span>
-          </div>
-          <div class="code-line double-indent">
-            <span class="string">"PostgreSQL"</span>
-          </div>
-          <div class="code-line indent">
-            <span class="bracket">]</span><span class="comma">,</span>
-          </div>
-          <div class="code-line indent">
-             <span class="key">status:</span> <span class="string">"Ready for challenge"</span>
-          </div>
-          <div class="code-line">
-            <span class="bracket">&#125;;</span>
-          </div>
+        <div class="terminal-body" id="console-content">
+<div class="line">
+  <span class="prompt">›</span> whoami
+</div>
+<div class="line indent">
+  Backend Engineer (Ssr.)
+</div>
+
+<div class="line">
+  <span class="prompt">›</span> focus
+</div>
+<div class="line indent">
+  Scalable APIs · Clean Architecture
+</div>
+
+<div class="line">
+  <span class="prompt">›</span> stack
+</div>
+<div class="line indent">
+  TypeScript · Node.js · NestJS · PostgreSQL
+</div>
+
+<div class="line">
+  <span class="prompt">›</span> status
+</div>
+<div class="line indent">
+  Currently open to opportunities
+</div>
+
         </div>
       </div>
     </div>
@@ -190,11 +188,12 @@
       width: 100%;
       max-width: 400px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      font-family: 'Fira Code', monospace; /* Need a monospace font stack fallback */
-      font-size: 0.9rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.8;
       transform: rotateY(-10deg) rotateX(5deg);
       transition: transform 0.3s ease;
-      animation: float 6s ease-in-out infinite;
+      /* Removed float animation for sober look as requested */
     }
     
     :global([data-theme="light"]) .terminal-window {
@@ -231,9 +230,33 @@
       color: #333;
     }
 
-    .code-line {
-      line-height: 1.6;
-      font-family: monospace; /* Simple monospace fallback */
+    .line {
+      min-height: 1.8em;
+      display: flex; /* Verify this doesn't break flow */
+      align-items: center;
+      flex-wrap: wrap; 
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 0.6em;
+      height: 1.2em;
+      background-color: var(--color-primary);
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+
+    .prompt {
+  color: var(--color-primary);
+  margin-right: 0.5rem;
+  font-weight: 600;
+}
+
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     .indent { padding-left: 1.5rem; }
@@ -284,3 +307,109 @@
        
   </style>
 </section>
+
+<script>
+  function initTyping() {
+    const container = document.getElementById('console-content');
+    if (!container) return; // Guard clause
+
+    // Capture the original content structure
+    // We expect .line elements.
+    const lines = Array.from(container.querySelectorAll('.line'));
+    if (lines.length === 0) return;
+
+    const fullContent = lines.map(line => line.cloneNode(true));
+    
+    // Clear the container initially
+    container.innerHTML = '';
+    
+    // Create a persistent cursor element
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+
+    // Type delay range (ms) - Slow and firm
+    const typeDelay = { min: 30, max: 70 }; 
+
+    const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    
+    const randomDelay = () => Math.floor(Math.random() * (typeDelay.max - typeDelay.min + 1) + typeDelay.min);
+
+    // Helper to type text content into an element
+    // It creates text nodes char by char and inserts them before the cursor
+    async function typeText(text, parentEl) {
+      for (let char of text) {
+        // Insert char before cursor
+        const textNode = document.createTextNode(char);
+        parentEl.insertBefore(textNode, cursor);
+        await wait(randomDelay());
+      }
+    }
+
+    // Interactive recursive function to process nodes
+    async function typeNodesIterative(nodes, parentEl) {
+        for (const node of nodes) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                await typeText(node.textContent, parentEl);
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                const newEl = document.createElement(node.tagName);
+                newEl.className = node.className;
+                if (node.getAttribute('style')) newEl.setAttribute('style', node.getAttribute('style'));
+                
+                // Insert element before cursor
+                parentEl.insertBefore(newEl, cursor);
+                
+                // We do NOT move the cursor inside the new element.
+                // We keep the cursor in the 'line' container or 'parentEl'.
+                // But we need to type content *into* newEl.
+                // To do that, we briefly move the cursor inside?
+                
+                // Better approach:
+                // Append cursor to newEl to type inside it, then move it back out?
+                // This simulates the cursor traveling into the syntax span.
+                
+                newEl.appendChild(cursor);
+                await typeNodesIterative(Array.from(node.childNodes), newEl);
+                
+                // After typing inside newEl, move cursor back to parentEl, right after newEl
+                parentEl.insertBefore(cursor, newEl.nextSibling);
+            }
+        }
+    }
+
+    async function typeLine(lineTemplate) {
+        const lineEl = document.createElement('div');
+        lineEl.className = lineTemplate.className;
+        container.appendChild(lineEl);
+        
+        // Start cursor in the line
+        lineEl.appendChild(cursor);
+        
+        await typeNodesIterative(Array.from(lineTemplate.childNodes), lineEl);
+        
+        // Line done.
+        await wait(100); 
+    }
+
+    async function run() {
+       await wait(1000); // Initial pause for dramatic effect
+       
+       for (const line of fullContent) {
+           await typeLine(line);
+           // After line is typed, we can leave cursor there or move to next line logic.
+           // The next typeLine call will move the cursor to the new line div.
+       }
+       
+       // Ensure cursor stays at the end
+       // current location is fine.
+    }
+    
+    run();
+  }
+
+  // Run on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTyping);
+  } else {
+    initTyping();
+  }
+</script>
