@@ -1,18 +1,44 @@
 [
   {
-    "title": "Product Monitor Extension",
-    "description": "Extensi&oacute;n de navegador para el monitoreo automatizado de precios y stock de productos en tiempo real.",
-    "tech": ["JavaScript", "Chrome API", "DOM Manipulation"],
-    "repoUrl": "https://github.com/gusgarozzo/offerWatchdog",
-    "demoUrl": "https://chromewebstore.google.com/detail/monitor-de-productos/gnloopghiogbfcnkakbbjmifhmldfjba?pli=1",
-    "highlight": "Soluci&oacute;n propia enfocada en la utilidad y automatizaci&oacute;n."
+    "title": "Authentication API",
+    "briefDescription": "API REST con NestJS que implementa flujos de autenticación seguros y escalables.",
+    "problema": "Necesidad de un sistema de gestión de sesiones robusto para aplicaciones modernas.",
+    "decisiones": [
+      "JWT con refresh tokens para persistencia de sesión",
+      "Hashing de contraseñas con bcrypt y guards para protección",
+      "Tests unitarios con Jest para validación de lógica"
+    ],
+    "resultado": "API segura, documentada con Swagger y lista para entornos de producción.",
+    "tech": ["NestJS", "JWT", "Jest", "Swagger"],
+    "repoUrl": "https://github.com/gusgarozzo/authentication_api",
+    "demoUrl": "https://authentication-api-xx18.onrender.com/api"
   },
   {
-    "title": "NestJS Scalable API Template",
-    "description": "API REST para obtener informaci&oacute;n meteorol&oacute;gica en tiempo real, construida con NestJS y TypeScript. Permite consultar el clima por ciudad y obtener datos detallados de temperatura, humedad, viento y condiciones atmosf&eacute;ricas.",
-    "tech": ["NestJS", "TypeScript", "PostgreSQL", "Docker"],
+    "title": "Weather API",
+    "briefDescription": "API meteorológica que combina datos estructurados con interpretación textual vía IA.",
+    "problema": "Transformar datos climáticos crudos en información útil y fácil de leer.",
+    "decisiones": [
+      "Integración con Gemini (IA) para interpretación en lenguaje natural",
+      "Cacheo con Redis para optimizar el consumo de API externa",
+      "Uso de Axios para comunicación resiliente con servicios externos"
+    ],
+    "resultado": "API optimizada que entrega datos técnicos procesados por una capa de IA.",
+    "tech": ["NestJS", "Redis", "Axios", "Gemini (IA)"],
     "repoUrl": "https://github.com/gusgarozzo/weather_api",
-    "demoUrl": null,
-    "highlight": "Demostraci&oacute;n de patrones de dise&ntilde;o y estructura backend profesional."
+    "demoUrl": null
+  },
+  {
+    "title": "Product Monitor Extension",
+    "briefDescription": "Extensión de navegador para automatización del seguimiento de precios y stock.",
+    "problema": "Dificultad en el rastreo manual de variaciones comerciales en múltiples tiendas.",
+    "decisiones": [
+      "Manipulación dinámica del DOM para extracción de datos en tiempo real",
+      "Uso de Chrome APIs para gestión de notificaciones e inyección",
+      "Arquitectura liviana enfocada en ejecución asíncrona"
+    ],
+    "resultado": "Herramienta que elimina la intervención manual en el monitoreo de ofertas.",
+    "tech": ["JavaScript", "Chrome API", "DOM Manipulation"],
+    "repoUrl": "https://github.com/gusgarozzo/offerWatchdog",
+    "demoUrl": "https://chromewebstore.google.com/detail/monitor-de-productos/gnloopghiogbfcnkakbbjmifhmldfjba?pli=1"
   }
 ]

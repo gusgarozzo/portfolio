@@ -7,16 +7,27 @@
       </h1>
 
       <p class="role">
-        Backend Ssr. &mdash; Node.js, NestJS y APIs escalables
+        Backend Developer Ssr — Node.js & NestJS
+      </p>
+
+      <p class="tagline">
+        APIs backend claras, seguras y mantenibles, pensadas para producci&oacute;n.
       </p>
 
       <nav class="links">
-        <a href="/cv.pdf" target="_blank" class="btn-primary">
-          Descargar CV
-        </a>
-        <a href="mailto:gustavogarozzo@gmail.com" class="link-item">Email</a>
-        <a href="https://github.com/gusgarozzo" target="_blank" class="link-item">GitHub</a>
-        <a href="https://linkedin.com/in/gusgarozzo" target="_blank" class="link-item">LinkedIn</a>
+        <div class="primary-actions">
+          <a href="/cv.pdf" target="_blank" class="btn-primary">
+            Descargar CV
+          </a>
+          <a href="/guia-nestjs.pdf" download class="btn-secondary">
+            Guía NestJS Trainee
+          </a>
+        </div>
+        <div class="social-links">
+          <a href="mailto:gustavogarozzo@gmail.com" class="link-item">Email</a>
+          <a href="https://github.com/gusgarozzo" target="_blank" class="link-item">GitHub</a>
+          <a href="https://linkedin.com/in/gusgarozzo" target="_blank" class="link-item">LinkedIn</a>
+        </div>
       </nav>
     </div>
 
@@ -28,34 +39,25 @@
           <div class="dot green"></div>
         </div>
         <div class="terminal-body" id="console-content">
-<div class="line">
-  <span class="prompt">›</span> whoami
-</div>
-<div class="line indent">
-  Backend Engineer (Ssr.)
+<div class="block prominent">
+  <div class="line"><span class="prompt">›</span> whoami</div>
+  <div class="line indent text-highlight">Backend Developer · 4+ years of experience</div>
 </div>
 
-<div class="line">
-  <span class="prompt">›</span> focus
-</div>
-<div class="line indent">
-  Scalable APIs · Clean Architecture
+<div class="block prominent">
+  <div class="line"><span class="prompt">›</span> specialization</div>
+  <div class="line indent text-highlight">API Design · Integrations</div>
 </div>
 
-<div class="line">
-  <span class="prompt">›</span> stack
-</div>
-<div class="line indent">
-  TypeScript · Node.js · NestJS · PostgreSQL
+<div class="block muted">
+  <div class="line"><span class="prompt">›</span> stack</div>
+  <div class="line indent">NestJS · Node.js · TypeScript</div>
 </div>
 
-<div class="line">
-  <span class="prompt">›</span> status
+<div class="block muted">
+  <div class="line"><span class="prompt">›</span> db</div>
+  <div class="line indent">PostgreSQL</div>
 </div>
-<div class="line indent">
-  Currently open to opportunities
-</div>
-
         </div>
       </div>
     </div>
@@ -110,15 +112,45 @@
     @media (min-width: 768px) {
       .role {
         font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--color-text);
+      margin-bottom: 2rem;
+      font-weight: 500;
+      max-width: 600px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+    
+    @media (min-width: 768px) {
+      .tagline {
+        font-size: 1.25rem;
         margin-bottom: 2.5rem;
       }
     }
 
     .links {
       display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .primary-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-links {
+      display: flex;
       gap: 1.5rem;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     .btn-primary {
@@ -130,6 +162,22 @@
       font-weight: 600;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background: var(--color-background-off);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
     }
 
     .btn-primary:hover {
@@ -243,7 +291,7 @@
       height: 1.2em;
       background-color: var(--color-primary);
       margin-left: 4px;
-      animation: blink 1s step-end infinite;
+      animation: blink 0.8s step-end infinite;
       vertical-align: middle;
     }
 
@@ -262,23 +310,29 @@
     .indent { padding-left: 1.5rem; }
     .double-indent { padding-left: 3rem; }
 
-    /* Syntax Highlighting */
-    .keyword { color: #cc7832; font-weight: bold; }
-    .variable { color: #a9b7c6; }
-    .operator { color: #a9b7c6; }
-    .bracket { color: #a9b7c6; }
-    .string { color: #6a8759; }
-    .key { color: #9876aa; }
-    .comma { color: #cc7832; }
+    /* Terminal Hierarchy */
+    .block {
+      margin-bottom: 1rem;
+    }
 
-    /* Light Theme Syntax Overrides */
-    :global([data-theme="light"]) .keyword { color: #0033b3; }
-    :global([data-theme="light"]) .variable { color: #000; }
-    :global([data-theme="light"]) .operator { color: #000; }
-    :global([data-theme="light"]) .bracket { color: #000; }
-    :global([data-theme="light"]) .string { color: #067d17; }
-    :global([data-theme="light"]) .key { color: #660e7a; }
-    :global([data-theme="light"]) .comma { color: #000; }
+    .prominent .line.indent {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .muted {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    .text-highlight {
+      color: var(--color-primary) !important;
+    }
+
+    :global([data-theme="light"]) .text-highlight {
+      color: var(--color-primary-dark) !important;
+    }
 
     .decoration {
       position: absolute;
@@ -309,107 +363,85 @@
 </section>
 
 <script>
-  function initTyping() {
+  function initTerminal() {
     const container = document.getElementById('console-content');
-    if (!container) return; // Guard clause
+    if (!container) return;
 
-    // Capture the original content structure
-    // We expect .line elements.
-    const lines = Array.from(container.querySelectorAll('.line'));
-    if (lines.length === 0) return;
-
-    const fullContent = lines.map(line => line.cloneNode(true));
-    
-    // Clear the container initially
+    // Capture original blocks and clear container
+    const blocks = Array.from(container.querySelectorAll('.block'));
     container.innerHTML = '';
     
-    // Create a persistent cursor element
     const cursor = document.createElement('span');
     cursor.className = 'cursor';
 
-    // Type delay range (ms) - Slow and firm
-    const typeDelay = { min: 30, max: 70 }; 
-
     const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-    
-    const randomDelay = () => Math.floor(Math.random() * (typeDelay.max - typeDelay.min + 1) + typeDelay.min);
+    const randomDelay = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-    // Helper to type text content into an element
-    // It creates text nodes char by char and inserts them before the cursor
-    async function typeText(text, parentEl) {
-      for (let char of text) {
-        // Insert char before cursor
-        const textNode = document.createTextNode(char);
-        parentEl.insertBefore(textNode, cursor);
-        await wait(randomDelay());
+    async function typeText(text, element) {
+      for (const char of text) {
+        element.appendChild(document.createTextNode(char));
+        // Append cursor after the newly added character
+        element.appendChild(cursor);
+        await wait(randomDelay(40, 100)); // Natural typing pace
       }
     }
 
-    // Interactive recursive function to process nodes
-    async function typeNodesIterative(nodes, parentEl) {
-        for (const node of nodes) {
-            if (node.nodeType === Node.TEXT_NODE) {
-                await typeText(node.textContent, parentEl);
-            } else if (node.nodeType === Node.ELEMENT_NODE) {
-                const newEl = document.createElement(node.tagName);
-                newEl.className = node.className;
-                if (node.getAttribute('style')) newEl.setAttribute('style', node.getAttribute('style'));
-                
-                // Insert element before cursor
-                parentEl.insertBefore(newEl, cursor);
-                
-                // We do NOT move the cursor inside the new element.
-                // We keep the cursor in the 'line' container or 'parentEl'.
-                // But we need to type content *into* newEl.
-                // To do that, we briefly move the cursor inside?
-                
-                // Better approach:
-                // Append cursor to newEl to type inside it, then move it back out?
-                // This simulates the cursor traveling into the syntax span.
-                
-                newEl.appendChild(cursor);
-                await typeNodesIterative(Array.from(node.childNodes), newEl);
-                
-                // After typing inside newEl, move cursor back to parentEl, right after newEl
-                parentEl.insertBefore(cursor, newEl.nextSibling);
-            }
-        }
-    }
-
-    async function typeLine(lineTemplate) {
-        const lineEl = document.createElement('div');
-        lineEl.className = lineTemplate.className;
-        container.appendChild(lineEl);
-        
-        // Start cursor in the line
-        lineEl.appendChild(cursor);
-        
-        await typeNodesIterative(Array.from(lineTemplate.childNodes), lineEl);
-        
-        // Line done.
-        await wait(100); 
-    }
-
     async function run() {
-       await wait(1000); // Initial pause for dramatic effect
-       
-       for (const line of fullContent) {
-           await typeLine(line);
-           // After line is typed, we can leave cursor there or move to next line logic.
-           // The next typeLine call will move the cursor to the new line div.
-       }
-       
-       // Ensure cursor stays at the end
-       // current location is fine.
+      await wait(800); // Initial delay
+      
+      for (let i = 0; i < blocks.length; i++) {
+        const block = blocks[i];
+        const lines = Array.from(block.querySelectorAll('.line'));
+        
+        const blockDiv = document.createElement('div');
+        blockDiv.className = block.className;
+        container.appendChild(blockDiv);
+
+        for (let j = 0; j < lines.length; j++) {
+          const line = lines[j];
+          const lineDiv = document.createElement('div');
+          lineDiv.className = line.className;
+          blockDiv.appendChild(lineDiv);
+
+          if (line.querySelector('.prompt')) {
+            // It's a command line
+            const promptSpan = document.createElement('span');
+            promptSpan.className = 'prompt';
+            promptSpan.textContent = '› ';
+            lineDiv.appendChild(promptSpan);
+            
+            // Text to type (removing the prompt character from original)
+            const cmdText = line.textContent.replace('›', '').trim();
+            lineDiv.appendChild(cursor);
+            await wait(300); // Ready to type
+            await typeText(cmdText, lineDiv);
+            await wait(400); // "Enter" pause
+          } else {
+            // It's an output line
+            // Outputs usually appear faster or line by line
+            lineDiv.appendChild(cursor);
+            const outputText = line.textContent.trim();
+            // Faster typing or immediate? The user said "real typing". 
+            // In a real terminal, output often appears instantly or per machine speed.
+            // But let's type it slightly faster to look good.
+            for (const char of outputText) {
+                lineDiv.insertBefore(document.createTextNode(char), cursor);
+                await wait(randomDelay(10, 30));
+            }
+            await wait(600); // Pause before next block
+          }
+        }
+      }
+      
+      // Keep cursor blinking at the end
     }
     
     run();
   }
 
-  // Run on load
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTyping);
+    document.addEventListener('DOMContentLoaded', initTerminal);
   } else {
-    initTyping();
+    initTerminal();
   }
 </script>

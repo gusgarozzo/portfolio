@@ -1,22 +1,22 @@
 [
   {
-    "category": "Backend",
-    "skills": ["Node.js", "NestJS", "TypeScript", "Express.js"]
+    "category": "Core & Frameworks",
+    "skills": ["Node.js", "NestJS", "TypeScript"]
   },
   {
-    "category": "Databases",
+    "category": "Data & Persistence",
     "skills": ["PostgreSQL", "Sequelize", "Redis", "DynamoDB"]
   },
   {
     "category": "Cloud & Infrastructure",
-    "skills": ["AWS Lambda", "API Gateway", "S3"]
+    "skills": ["AWS Lambda", "API Gateway", "S3", "Docker"]
   },
   {
-    "category": "Architecture & Patterns",
-    "skills": ["Clean Architecture", "Microservices", "Event-Driven", "SOLID"]
+    "category": "Architecture & Mindset",
+    "skills": ["Clean Architecture", "SOLID", "RESTful APIs", "JWT Security"]
   },
   {
-    "category": "Other",
-    "skills": ["Git", "PHP"]
+    "category": "Tools & Others",
+    "skills": ["Git", "Jest", "Swagger", "PHP"]
   }
 ]
