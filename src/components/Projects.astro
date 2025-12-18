@@ -12,12 +12,12 @@ import proyects from "../data/projects.json";
             <h3>{project.title}</h3>
             <div class="links">
               {project.repoUrl && (
-                <a href={project.repoUrl} target="_blank" rel="noopener" aria-label="Repositorio GitHub">
+                <a href={project.repoUrl} target="_blank" rel="noopener" title="Ver Repositorio" aria-label="Repositorio GitHub">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
               )}
               {project.demoUrl && (
-                <a href={project.demoUrl} target="_blank" rel="noopener" aria-label="Demo en vivo">
+                <a href={project.demoUrl} target="_blank" rel="noopener" title="Ver API" aria-label="Demo en vivo">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
               )}
@@ -44,6 +44,12 @@ import proyects from "../data/projects.json";
                 <span class="label">Resultado</span>
                 <p>{project.resultado}</p>
               </div>
+
+              {project.keyFocus && (
+                <div class="key-focus">
+                  <span class="focus-label">Foco técnico:</span> {project.keyFocus}
+                </div>
+              )}
             </div>
           </div>
 
@@ -106,38 +112,54 @@ import proyects from "../data/projects.json";
 
     .project-card:hover {
       border-color: var(--color-primary);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.1);
+    }
+
+    .project-card:hover h3 {
+      color: var(--color-primary);
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      gap: 1.5rem;
     }
 
     h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 800;
       margin: 0;
       color: var(--color-text);
       letter-spacing: -0.01em;
+      line-height: 1.2;
+      flex: 1;
     }
 
     .links {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
     }
 
     .links a {
       color: var(--color-muted);
-      transition: color 0.2s;
-      opacity: 0.7;
+      transition: all 0.2s ease;
+      opacity: 0.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
     }
 
     .links a:hover {
       color: var(--color-primary);
       opacity: 1;
+      transform: translateY(-1px);
     }
 
     .project-content {
@@ -185,9 +207,18 @@ import proyects from "../data/projects.json";
       list-style-type: disc;
     }
 
-    .item li {
-      margin-bottom: 0.15rem;
-      line-height: 1.3;
+    .key-focus {
+      margin-top: 0.75rem; /* ~12px for separation from Resultado */
+      font-size: 0.8rem;
+      color: var(--color-text);
+      font-style: italic;
+      opacity: 0.6; /* Reduced prominence */
+    }
+
+    .focus-label {
+      font-weight: 700;
+      font-style: normal;
+      opacity: 0.8;
     }
 
     .tech-stack-container {
