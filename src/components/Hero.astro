@@ -39,25 +39,25 @@
           <div class="dot green"></div>
         </div>
         <div class="terminal-body" id="console-content">
-<div class="block prominent">
-  <div class="line"><span class="prompt">›</span> whoami</div>
-  <div class="line indent text-highlight">Backend Developer · 4+ years of experience</div>
-</div>
+          <div class="block prominent">
+            <div class="line"><span class="prompt">›</span> whoami</div>
+            <div class="line indent text-highlight">Backend Developer · 4+ años de exp.</div>
+          </div>
 
-<div class="block prominent">
-  <div class="line"><span class="prompt">›</span> specialization</div>
-  <div class="line indent text-highlight">API Design · Integrations</div>
-</div>
+          <div class="block prominent">
+            <div class="line"><span class="prompt">›</span> especialidad</div>
+            <div class="line indent text-highlight">Diseño de APIs · Escalabilidad</div>
+          </div>
 
-<div class="block muted">
-  <div class="line"><span class="prompt">›</span> stack</div>
-  <div class="line indent">NestJS · Node.js · TypeScript</div>
-</div>
+          <div class="block muted">
+            <div class="line"><span class="prompt">›</span> stack</div>
+            <div class="line indent">Node.js · NestJS · TypeScript</div>
+          </div>
 
-<div class="block muted">
-  <div class="line"><span class="prompt">›</span> db</div>
-  <div class="line indent">PostgreSQL</div>
-</div>
+          <div class="block muted">
+            <div class="line"><span class="prompt">›</span> db</div>
+            <div class="line indent">PostgreSQL</div>
+          </div>
         </div>
       </div>
     </div>
@@ -227,43 +227,45 @@
       }
     }
 
+    /* Terminal Styles */
     .terminal-window {
-      background: rgba(var(--color-background-off), 0.7); /* Fallback */
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(13, 17, 23, 0.75); /* Modern translucent dark */
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       padding: 1.5rem;
       width: 100%;
-      max-width: 400px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      max-width: 440px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); /* Deeper, diffuse shadow */
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.95rem;
       line-height: 1.8;
-      transform: rotateY(-10deg) rotateX(5deg);
       transition: transform 0.3s ease;
-      /* Removed float animation for sober look as requested */
+      transform-style: preserve-3d;
+      transform: rotateY(-8deg) rotateX(4deg);
     }
     
     :global([data-theme="light"]) .terminal-window {
-       background: rgba(255, 255, 255, 0.7);
-       border-color: rgba(0,0,0,0.1);
-       box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+       background: rgba(255, 255, 255, 0.75);
+       border-color: rgba(0,0,0,0.08);
+       box-shadow: 0 30px 60px rgba(0,0,0,0.1);
     }
 
     .terminal-window:hover {
-      transform: rotateY(0) rotateX(0);
+      transform: rotateY(0) rotateX(0) translateY(-5px);
     }
 
     .terminal-header {
       display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
     }
 
     .dot {
-      width: 12px;
-      height: 12px;
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
+      opacity: 0.8;
     }
 
     .red { background: #ff5f56; }
@@ -280,15 +282,15 @@
 
     .line {
       min-height: 1.8em;
-      display: flex; /* Verify this doesn't break flow */
+      display: flex;
       align-items: center;
       flex-wrap: wrap; 
     }
 
     .cursor {
       display: inline-block;
-      width: 0.6em;
-      height: 1.2em;
+      width: 0.5em;
+      height: 1.1em;
       background-color: var(--color-primary);
       margin-left: 4px;
       animation: blink 0.8s step-end infinite;
@@ -296,11 +298,11 @@
     }
 
     .prompt {
-  color: var(--color-primary);
-  margin-right: 0.5rem;
-  font-weight: 600;
-}
-
+      color: var(--color-primary);
+      margin-right: 0.5rem;
+      font-weight: 600;
+      opacity: 0.9;
+    }
 
     @keyframes blink {
       0%, 100% { opacity: 1; }
@@ -308,7 +310,6 @@
     }
 
     .indent { padding-left: 1.5rem; }
-    .double-indent { padding-left: 3rem; }
 
     /* Terminal Hierarchy */
     .block {
@@ -328,10 +329,6 @@
 
     .text-highlight {
       color: var(--color-primary) !important;
-    }
-
-    :global([data-theme="light"]) .text-highlight {
-      color: var(--color-primary-dark) !important;
     }
 
     .decoration {
@@ -403,27 +400,24 @@
           lineDiv.className = line.className;
           blockDiv.appendChild(lineDiv);
 
-          if (line.querySelector('.prompt')) {
+          const promptEl = line.querySelector('.prompt');
+          if (promptEl) {
             // It's a command line
             const promptSpan = document.createElement('span');
             promptSpan.className = 'prompt';
-            promptSpan.textContent = '› ';
+            promptSpan.textContent = promptEl.textContent.trim() + ' ';
             lineDiv.appendChild(promptSpan);
             
             // Text to type (removing the prompt character from original)
-            const cmdText = line.textContent.replace('›', '').trim();
+            const cmdText = line.textContent.replace(promptEl.textContent, '').trim();
             lineDiv.appendChild(cursor);
             await wait(300); // Ready to type
             await typeText(cmdText, lineDiv);
             await wait(400); // "Enter" pause
           } else {
             // It's an output line
-            // Outputs usually appear faster or line by line
             lineDiv.appendChild(cursor);
             const outputText = line.textContent.trim();
-            // Faster typing or immediate? The user said "real typing". 
-            // In a real terminal, output often appears instantly or per machine speed.
-            // But let's type it slightly faster to look good.
             for (const char of outputText) {
                 lineDiv.insertBefore(document.createTextNode(char), cursor);
                 await wait(randomDelay(10, 30));
@@ -432,8 +426,6 @@
           }
         }
       }
-      
-      // Keep cursor blinking at the end
     }
     
     run();
