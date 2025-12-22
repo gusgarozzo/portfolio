@@ -2,12 +2,13 @@
   {
     "company": "AIOTEK",
     "role": "Ssr. Node.js Developer",
-    "period": "Septiembre 2023 - Presente",
+    "period": "Septiembre 2023 - Actualidad",
     "points": [
-      "Dise&ntilde;o e implementaci&oacute;n de APIs RESTful de alto rendimiento utilizando NestJS.",
-      "Automatizaci&oacute;n de integraciones con Marketplaces y ERPs.",
-      "Optimizaci&oacute;n de consultas complejas en PostgreSQL con Sequelize.",
-      "Implementaci&oacute;n de Clean Architecture y documentaci&oacute;n con Swagger."
+      "Desarrollo de APIs REST con NestJS para e-commerce, enfocadas en la sincronización y gestión eficiente de productos, órdenes y usuarios.",
+      "Implementación de integraciones con APIs externas (marketplaces y ERP) para la automatización de inventarios y pedidos.",
+      "Optimización de consultas y transacciones complejas en PostgreSQL utilizando Sequelize, mejorando el rendimiento del sistema.",
+      "Documentación de APIs con Swagger, facilitando los ciclos de QA y la integración con clientes externos.",
+      "Aplicación de arquitectura limpia y buenas prácticas de seguridad para garantizar escalabilidad y mantenimiento."
     ]
   },
   {
@@ -15,9 +16,21 @@
     "role": "Desarrollador Node.js | NestJS",
     "period": "Noviembre 2022 - Septiembre 2023",
     "points": [
-      "Migraci&oacute;n de una calculadora ganadera a NestJS para mejorar la mantenibilidad del sistema.",
-      "Implementaci&oacute;n de infraestructura Serverless con AWS Lambda y API Gateway.",
-      "Automatizaci&oacute;n de c&aacute;lculos de emisiones con generaci&oacute;n de datos en formato JSON."
+      "Implementación de funcionalidades en arquitectura Serverless utilizando AWS Lambda y API Gateway.",
+      "Migración de una calculadora ganadera a NestJS, mejorando la escalabilidad futura y la mantenibilidad del sistema.",
+      "Automatización de cálculos de emisiones con generación de salidas en formato JSON.",
+      "Gestión de almacenamiento en AWS S3 para asegurar alta disponibilidad y confiabilidad."
+    ]
+  },
+  {
+    "company": "QWAVEE - IT",
+    "role": "Desarrollador PHP | Drupal",
+    "period": "Febrero 2022 - Noviembre 2022",
+    "points": [
+      "Migración de contenidos y estructuras críticas desde Drupal 7 a Drupal 9, garantizando la integridad de datos, usuarios y permisos.",
+      "Análisis y ajustes post-migración para asegurar la continuidad funcional y visual del sitio.",
+      "Validación exhaustiva de cada fase del proceso de migración, minimizando riesgos de pérdida de datos.",
+      "Optimización del proceso de migración mediante scripts de automatización y ajustes manuales estratégicos."
     ]
   }
 ]
