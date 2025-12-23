@@ -8,25 +8,32 @@ import proyects from "../data/projects.json";
     {
       proyects.map((project) => (
         <article class="project-card">
-          <div class="card-header">
-            <h3>{project.title}</h3>
-            <div class="links">
-              {project.repoUrl && (
-                <a href={project.repoUrl} target="_blank" rel="noopener" title="Ver Repositorio" aria-label="Repositorio GitHub">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
-              )}
-              {project.demoUrl && (
-                <a href={project.demoUrl} target="_blank" rel="noopener" title="Ver API" aria-label="Demo en vivo">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-              )}
+          <div class="level-1">
+            <div class="card-header">
+              <h3>{project.title}</h3>
+              <div class="links">
+                {project.repoUrl && (
+                  <a href={project.repoUrl} target="_blank" rel="noopener" title="Ver Repositorio" aria-label="Repositorio GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+                )}
+                {project.demoUrl && (
+                  <a href={project.demoUrl} target="_blank" rel="noopener" title="Ver API" aria-label="Demo en vivo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                )}
+              </div>
             </div>
+            <p class="brief-description">{project.briefDescription}</p>
           </div>
           
-          <div class="project-content">
-            <p class="brief-description">{project.briefDescription}</p>
-            
+          <div class="level-2">
+            <div class="tech-tags">
+              {project.tech.map((tech) => (
+                <span class="tag">{tech}</span>
+              ))}
+            </div>
+
             <div class="case-study">
               <div class="item">
                 <span class="label">Problema</span>
@@ -34,7 +41,7 @@ import proyects from "../data/projects.json";
               </div>
               
               <div class="item">
-                <span class="label">Decisiones clave</span>
+                <span class="label">Estrategia</span>
                 <ul>
                   {project.decisiones.map(decision => <li>{decision}</li>)}
                 </ul>
@@ -47,23 +54,22 @@ import proyects from "../data/projects.json";
 
               {project.keyFocus && (
                 <div class="key-focus">
-                  <span class="focus-label">Foco técnico:</span> {project.keyFocus}
+                  <code>{project.keyFocus}</code>
                 </div>
               )}
-            </div>
-          </div>
-
-          <div class="tech-stack-container">
-            <div class="separator"></div>
-            <div class="tech-tags">
-              {project.tech.map((tech) => (
-                <span class="tag">{tech}</span>
-              ))}
             </div>
           </div>
         </article>
       ))
     }
+    {proyects.length % 2 !== 0 && (
+      <div class="grid-placeholder" aria-hidden="true">
+        <div class="placeholder-content">
+          <div class="pattern"></div>
+          <span>Proyectos adicionales en desarrollo</span>
+        </div>
+      </div>
+    )}
   </div>
 
   <style>
@@ -93,144 +99,68 @@ import proyects from "../data/projects.json";
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
     }
 
     .project-card {
       background: var(--color-background-off);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
-      position: relative;
-      overflow: hidden;
+      gap: 1.5rem;
       height: 100%;
+      transition: all 0.2s ease;
     }
 
     .project-card:hover {
       border-color: var(--color-primary);
-      transform: translateY(-4px);
-      box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.1);
+      box-shadow: var(--shadow-sm);
     }
 
-    .project-card:hover h3 {
-      color: var(--color-primary);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-      gap: 1.5rem;
-    }
-
-    h3 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      margin: 0;
-      color: var(--color-text);
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-      flex: 1;
-    }
-
-    .links {
-      display: flex;
-      gap: 0.8rem;
-      flex-shrink: 0;
-      margin-top: 0.15rem;
-    }
-
-    .links a {
-      color: var(--color-muted);
-      transition: all 0.2s ease;
-      opacity: 0.6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-    }
-
-    .links a:hover {
-      color: var(--color-primary);
-      opacity: 1;
-      transform: translateY(-1px);
-    }
-
-    .project-content {
-      flex: 1;
+    /* Nivel 1: Lectura Primaria */
+    .level-1 {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
     }
 
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin: 0;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+    }
+
     .brief-description {
-      font-size: 0.95rem;
-      color: var(--color-muted);
-      line-height: 1.4;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--color-text);
       margin: 0;
     }
 
-    .case-study {
+    /* Nivel 2: Profundización Opcional */
+    .level-2 {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 1.1rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--color-border);
+      opacity: 0.45;
+      transition: opacity 0.3s ease;
     }
 
-    .label {
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      letter-spacing: 0.05em;
-      display: block;
-      margin-bottom: 0.15rem;
-    }
-
-    .item p {
-      font-size: 0.9rem;
-      margin: 0;
-      line-height: 1.4;
-      color: var(--color-text);
-    }
-
-    .item ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      font-size: 0.9rem;
-      color: var(--color-text);
-      list-style-type: disc;
-    }
-
-    .key-focus {
-      margin-top: 0.75rem; /* ~12px for separation from Resultado */
-      font-size: 0.8rem;
-      color: var(--color-text);
-      font-style: italic;
-      opacity: 0.6; /* Reduced prominence */
-    }
-
-    .focus-label {
-      font-weight: 700;
-      font-style: normal;
-      opacity: 0.8;
-    }
-
-    .tech-stack-container {
-      margin-top: 1rem;
-    }
-
-    .separator {
-      height: 1px;
-      background: var(--color-border);
-      width: 100%;
-      margin-bottom: 0.75rem;
-      opacity: 0.5;
+    .project-card:hover .level-2 {
+      opacity: 0.85;
     }
 
     .tech-tags {
@@ -240,19 +170,107 @@ import proyects from "../data/projects.json";
     }
 
     .tag {
-      font-size: 0.7rem;
-      font-weight: 700;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.65rem;
       padding: 0.15rem 0.5rem;
-      background: rgba(var(--color-primary-rgb), 0.05);
-      border: 1px solid rgba(var(--color-primary-rgb), 0.1);
-      color: var(--color-primary);
+      background: rgba(var(--color-primary-rgb), 0.03);
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
       border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
 
-    :global([data-theme="light"]) .tag {
-      background: var(--color-background-off);
-      border-color: var(--color-border);
+    .links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .links a {
       color: var(--color-text-muted);
+      opacity: 0.5;
+      transition: all 0.2s ease;
+    }
+
+    .links a:hover {
+      color: var(--color-primary);
+      opacity: 1;
+    }
+
+    .case-study {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .label {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      display: block;
+      margin-bottom: 0.2rem;
+      opacity: 0.7;
+      font-weight: 700;
+    }
+
+    .item p, .item li {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    .item ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .key-focus {
+      margin-top: 0.4rem;
+    }
+
+    .key-focus code {
+      font-size: 0.7rem;
+      background: var(--color-background);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+      opacity: 0.8;
+    }
+
+    /* Grid Placeholder Control */
+    .grid-placeholder {
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(var(--color-text-rgb), 0.01) 10px,
+        rgba(var(--color-text-rgb), 0.01) 20px
+      );
+      opacity: 0.5;
+    }
+
+    .placeholder-content {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-family: var(--font-mono, monospace);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    :global([data-theme="light"]) .project-card {
+      background: #fafafa;
     }
   </style>
 </section>

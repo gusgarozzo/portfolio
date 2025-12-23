@@ -11,7 +11,7 @@
       </p>
 
       <p class="tagline">
-      Diseño y construcci&oacute;n de APIs robustas para entornos productivos
+        Desarrollo backend enfocado en robustez, performance y diseño de sistemas mantenibles.
       </p>
 
       <nav class="links">
@@ -39,24 +39,9 @@
           <div class="dot green"></div>
         </div>
         <div class="terminal-body" id="console-content">
-          <div class="block prominent">
-            <div class="line"><span class="prompt">›</span> whoami</div>
-            <div class="line indent text-highlight">Backend Developer · 4+ años de exp.</div>
-          </div>
-
-          <div class="block prominent">
-            <div class="line"><span class="prompt">›</span> especialidad</div>
-            <div class="line indent text-highlight">Diseño de APIs · Escalabilidad</div>
-          </div>
-
-          <div class="block muted">
-            <div class="line"><span class="prompt">›</span> stack</div>
-            <div class="line indent">Node.js · NestJS · TypeScript</div>
-          </div>
-
-          <div class="block muted">
-            <div class="line"><span class="prompt">›</span> db</div>
-            <div class="line indent">PostgreSQL</div>
+          <!-- Animation handled by script -->
+          <div class="line">
+            <span class="prompt">$</span> <span class="cmd-text">npm run start:prod</span>
           </div>
         </div>
       </div>
@@ -69,7 +54,7 @@
     .hero {
       padding: 4rem 0;
       position: relative;
-      overflow: visible; /* Allow graphic to float freely if needed */
+      overflow: visible;
     }
 
     .container {
@@ -214,7 +199,7 @@
       transform-origin: left;
     }
     
-    /* Graphic Styles */
+    /* Terminal Styles */
     .hero-graphic {
       display: none;
       justify-content: center;
@@ -227,45 +212,44 @@
       }
     }
 
-    /* Terminal Styles */
     .terminal-window {
-      background: rgba(13, 17, 23, 0.75); /* Modern translucent dark */
+      background: rgba(13, 17, 23, 0.85);
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       padding: 1.5rem;
       width: 100%;
-      max-width: 440px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); /* Deeper, diffuse shadow */
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.95rem;
-      line-height: 1.8;
-      transition: transform 0.3s ease;
+      max-width: 540px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transform-style: preserve-3d;
       transform: rotateY(-8deg) rotateX(4deg);
     }
     
     :global([data-theme="light"]) .terminal-window {
-       background: rgba(255, 255, 255, 0.75);
-       border-color: rgba(0,0,0,0.08);
-       box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+       background: rgba(248, 249, 250, 0.9);
+       border-color: rgba(0,0,0,0.1);
+       box-shadow: 0 40px 80px rgba(0,0,0,0.15);
     }
 
     .terminal-window:hover {
-      transform: rotateY(0) rotateX(0) translateY(-5px);
+      transform: rotateY(0) rotateX(0) translateY(-10px);
     }
 
     .terminal-header {
       display: flex;
       gap: 0.6rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
     }
 
     .dot {
-      width: 11px;
-      height: 11px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      opacity: 0.8;
+      box-shadow: inset 0 0 1px rgba(0,0,0,0.1);
     }
 
     .red { background: #ff5f56; }
@@ -273,62 +257,85 @@
     .green { background: #27c93f; }
 
     .terminal-body {
-      color: #a9b7c6;
+      color: #cbd5e1;
     }
     
     :global([data-theme="light"]) .terminal-body {
-      color: #333;
+      color: #1e293b;
     }
 
     .line {
-      min-height: 1.8em;
+      min-height: 1.5em;
       display: flex;
-      align-items: center;
-      flex-wrap: wrap; 
+      align-items: flex-start;
+      margin-bottom: 0.1rem;
+      white-space: pre;
+    }
+
+    /* NestJS Theme Colors - :global used for dynamically injected HTML */
+    :global(.prompt) {
+      color: #94a3b8;
+      margin-right: 0.5rem;
+      font-weight: 600;
+    }
+
+    :global(.cmd-text) {
+      color: #f8fafc;
+    }
+    
+    :global([data-theme="light"] .cmd-text) {
+      color: #1e293b;
+    }
+
+    :global(.nest-tag) {
+      color: #4ade80;
+      font-weight: bold;
+      margin-right: 0.4rem;
+    }
+
+    :global(.nest-pid) {
+      color: #64748b;
+      margin-right: 0.4rem;
+    }
+
+    :global(.nest-context) {
+      color: #2dd4bf;
+      margin-right: 0.4rem;
+    }
+
+    :global(.success-text) {
+      color: #cbd5e1;
+    }
+    
+    :global([data-theme="light"] .success-text) {
+      color: #334155;
+    }
+    
+    :global(.check) {
+      color: #4ade80;
+      margin-right: 0.4rem;
+      font-weight: bold;
+    }
+
+    :global(.highlight-port) {
+      color: #fde047;
+      font-weight: 600;
     }
 
     .cursor {
       display: inline-block;
-      width: 0.5em;
+      width: 0.55em;
       height: 1.1em;
       background-color: var(--color-primary);
-      margin-left: 4px;
-      animation: blink 0.8s step-end infinite;
+      margin-left: 1px;
+      animation: blink 1s step-end infinite;
       vertical-align: middle;
-    }
-
-    .prompt {
-      color: var(--color-primary);
-      margin-right: 0.5rem;
-      font-weight: 600;
-      opacity: 0.9;
+      border-radius: 1px;
     }
 
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
-    }
-
-    .indent { padding-left: 1.5rem; }
-
-    /* Terminal Hierarchy */
-    .block {
-      margin-bottom: 1rem;
-    }
-
-    .prominent .line.indent {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--color-text);
-    }
-
-    .muted {
-      opacity: 0.8;
-      font-size: 0.9rem;
-    }
-
-    .text-highlight {
-      color: var(--color-primary) !important;
     }
 
     .decoration {
@@ -344,18 +351,6 @@
       z-index: -1;
       pointer-events: none;
     }
-
-    @keyframes float {
-      0% { transform: translateY(0px) rotateY(-10deg) rotateX(5deg); }
-      50% { transform: translateY(-15px) rotateY(-10deg) rotateX(5deg); }
-      100% { transform: translateY(0px) rotateY(-10deg) rotateX(5deg); }
-    }
-    
-    /* Modify float for hover state to prevent conflict? 
-       Actually, hover overrides transform, so animation might look jerky on hover.
-       Let's pause animation on hover or wrap it. 
-       For simplicity, let's keep it simple. */
-       
   </style>
 </section>
 
@@ -364,70 +359,77 @@
     const container = document.getElementById('console-content');
     if (!container) return;
 
-    // Capture original blocks and clear container
-    const blocks = Array.from(container.querySelectorAll('.block'));
+    // Use current date for authentic logs
+    const now = new Date();
+    const timestamp = now.toLocaleString('en-US', { 
+      month: '2-digit', 
+      day: '2-digit', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    }).replace(',', '');
+
+    // Authentic NestJS Production Logs
+    const commandText = "npm run start:prod";
+    const logs = [
+      `<span class="nest-tag">[Nest]</span> <span class="nest-pid">12745</span>  - <span class="success-text">${timestamp}</span>     <span class="nest-tag">LOG</span> <span class="nest-context">[NestFactory]</span> <span class="success-text">Starting Nest application...</span>`,
+      `<span class="nest-tag">[Nest]</span> <span class="nest-pid">12745</span>  - <span class="success-text">${timestamp}</span>     <span class="nest-tag">LOG</span> <span class="nest-context">[InstanceLoader]</span> <span class="success-text">AppModule dependencies initialized</span>`,
+      `<span class="nest-tag">[Nest]</span> <span class="nest-pid">12745</span>  - <span class="success-text">${timestamp}</span>     <span class="nest-tag">LOG</span> <span class="nest-context">[RoutesResolver]</span> <span class="success-text">AppController {/}:</span>`,
+      `<span class="nest-tag">[Nest]</span> <span class="nest-pid">12745</span>  - <span class="success-text">${timestamp}</span>     <span class="nest-tag">LOG</span> <span class="nest-context">[NestApplication]</span> <span class="check">✓</span> <span class="success-text">Nest application successfully started</span>`,
+      `<span class="nest-tag">[Nest]</span> <span class="nest-pid">12745</span>  - <span class="success-text">${timestamp}</span>     <span class="nest-tag">LOG</span> <span class="nest-context">[NestApplication]</span> <span class="success-text">Listening on port</span> <span class="highlight-port">3000</span>`
+    ];
+
     container.innerHTML = '';
+    const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     
     const cursor = document.createElement('span');
     cursor.className = 'cursor';
 
-    const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-    const randomDelay = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-
-    async function typeText(text, element) {
-      for (const char of text) {
-        element.appendChild(document.createTextNode(char));
-        // Append cursor after the newly added character
-        element.appendChild(cursor);
-        await wait(randomDelay(40, 100)); // Natural typing pace
-      }
-    }
-
     async function run() {
-      await wait(800); // Initial delay
+      await wait(600); 
+
+      // --- PHASE A: Typing Command (Fast and Dry) ---
+      const cmdLine = document.createElement('div');
+      cmdLine.className = 'line';
       
-      for (let i = 0; i < blocks.length; i++) {
-        const block = blocks[i];
-        const lines = Array.from(block.querySelectorAll('.line'));
+      const promptSpan = document.createElement('span');
+      promptSpan.className = 'prompt';
+      promptSpan.textContent = '$';
+      
+      const cmdSpan = document.createElement('span');
+      cmdSpan.className = 'cmd-text';
+      
+      cmdLine.appendChild(promptSpan);
+      cmdLine.appendChild(document.createTextNode(' '));
+      cmdLine.appendChild(cmdSpan);
+      cmdLine.appendChild(cursor);
+      container.appendChild(cmdLine);
+
+      for (const char of commandText) {
+        cmdSpan.textContent += char;
+        cmdLine.appendChild(cursor); 
+        await wait(25 + Math.random() * 25); // Faster typing
+      }
+
+      await wait(350); // Engine processing pause
+
+      // --- PHASE B: System Logs (Staggered Pop-up) ---
+      for (const logHTML of logs) {
+        if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
         
-        const blockDiv = document.createElement('div');
-        blockDiv.className = block.className;
-        container.appendChild(blockDiv);
-
-        for (let j = 0; j < lines.length; j++) {
-          const line = lines[j];
-          const lineDiv = document.createElement('div');
-          lineDiv.className = line.className;
-          blockDiv.appendChild(lineDiv);
-
-          const promptEl = line.querySelector('.prompt');
-          if (promptEl) {
-            // It's a command line
-            const promptSpan = document.createElement('span');
-            promptSpan.className = 'prompt';
-            promptSpan.textContent = promptEl.textContent.trim() + ' ';
-            lineDiv.appendChild(promptSpan);
-            
-            // Text to type (removing the prompt character from original)
-            const cmdText = line.textContent.replace(promptEl.textContent, '').trim();
-            lineDiv.appendChild(cursor);
-            await wait(300); // Ready to type
-            await typeText(cmdText, lineDiv);
-            await wait(400); // "Enter" pause
-          } else {
-            // It's an output line
-            lineDiv.appendChild(cursor);
-            const outputText = line.textContent.trim();
-            for (const char of outputText) {
-                lineDiv.insertBefore(document.createTextNode(char), cursor);
-                await wait(randomDelay(10, 30));
-            }
-            await wait(600); // Pause before next block
-          }
-        }
+        const logLine = document.createElement('div');
+        logLine.className = 'line';
+        logLine.innerHTML = logHTML;
+        
+        container.appendChild(logLine);
+        logLine.appendChild(cursor);
+        
+        await wait(60 + Math.random() * 80); // Subtle staggering
       }
     }
-    
+
     run();
   }
 
