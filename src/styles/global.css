@@ -1,60 +1,49 @@
-/* Josh W. Comeau-inspired Theme with Dark Mode Default */
 :root {
-  /* Dark Mode (Default) */
+  /* Dark Mode (Default) - Slate & Emerald Technical Palette */
   /* Colors */
-  --color-text: hsl(220, 10%, 90%);
-  --color-text-rgb: 224, 227, 235; /* RGB for opacity */
-  --color-background: hsl(220, 15%, 10%);
-  --color-primary: hsl(250, 100%, 75%);
-  --color-primary-rgb: 128, 128, 255; /* RGB for opacity */
-  --color-secondary: hsl(330, 100%, 65%);
-  --color-accent: hsl(160, 100%, 50%);
-  --color-muted: hsl(220, 10%, 65%);
-  --color-background-off: hsl(220, 15%, 15%);
-  --color-border: hsl(220, 15%, 20%);
+  --color-text: #f1f5f9;
+  --color-text-rgb: 241, 245, 249;
+  --color-background: #0f172a; /* Slate 900 */
+  --color-primary: #4ade80; /* NestJS Green */
+  --color-primary-rgb: 74, 222, 128;
+  --color-secondary: #2dd4bf; /* Teal 400 */
+  --color-accent: #fde047; /* Yellow for highlights */
+  --color-muted: #94a3b8;
+  --color-background-off: #1e293b;
+  --color-border: rgba(255, 255, 255, 0.08);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
+  --gradient-primary: linear-gradient(135deg, #4ade80, #2dd4bf);
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5),
-    0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5),
-    0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  /* Shadows - Subtle technical depth */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
 
   /* Spacing & Layout */
   --radius-md: 8px;
-  --radius-lg: 16px;
+  --radius-lg: 12px; /* Standardized to macOS/Terminal style */
   --max-width: 1100px;
 }
 
 [data-theme="light"] {
-  /* Light Mode Overrides */
-  --color-text: hsl(220, 10%, 10%);
-  --color-text-rgb: 26, 28, 33;
-  --color-background: hsl(0, 0%, 100%);
-  --color-primary: hsl(245, 100%, 65%);
-  --color-primary-rgb: 77, 77, 255;
-  --color-secondary: hsl(330, 100%, 55%);
-  --color-accent: hsl(160, 100%, 40%);
-  --color-muted: hsl(220, 10%, 40%);
-  --color-background-off: hsl(220, 20%, 97%);
-  --color-border: hsl(
-    220,
-    10%,
-    90%
-  ); /* Darker border for light mode visibility */
+  /* Light Mode Overrides - Slate 50 Extension */
+  --color-text: #0f172a;
+  --color-text-rgb: 15, 23, 42;
+  --color-background: #f8fafc; /* Slate 50 */
+  --color-primary: #16a34a; /* Deeper Green for contrast */
+  --color-primary-rgb: 22, 163, 74;
+  --color-secondary: #0d9488;
+  --color-accent: #ca8a04;
+  --color-muted: #64748b;
+  --color-background-off: #f1f5f9;
+  --color-border: rgba(0, 0, 0, 0.08);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
 }
 
 /* Base Reset */

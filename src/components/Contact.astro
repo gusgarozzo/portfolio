@@ -1,13 +1,13 @@
 <section id="contact">
-  <h2>Contacto</h2>
+  <h2><span class="number">04 /</span> Contacto</h2>
   
   <div class="contact-card">
     <div class="text-content">
       <p class="lead">
-        &iquest;Necesit&aacute;s un backend claro y listo para producci&oacute;n?
+        &iquest;Hablamos de tu pr&oacute;ximo backend?
       </p>
-      <p>
-        Desarrollo APIs backend con NestJS, enfocadas en seguridad, arquitectura limpia y mantenibilidad. Pod&eacute;s escribirme para oportunidades laborales, proyectos backend o consultas t&eacute;cnicas.
+      <p class="description">
+        Estoy disponible para colaboraciones, dise&ntilde;o de APIs robustas y consultor&iacute;as t&eacute;cnicas enfocadas en escalabilidad y arquitectura limpia.
       </p>
       <p class="highlight-text">
         Respondo personalmente.
@@ -32,105 +32,156 @@
 
   <style>
     section {
-      margin-bottom: 2rem;
+      padding: 4rem 0;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 2rem 0;
+      }
     }
 
     h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 3.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       position: relative;
-      display: inline-block;
     }
-    
-    h2::after {
+
+    h2 .number {
+      color: var(--color-primary);
+      opacity: 0.8;
+      font-family: var(--font-mono, monospace);
+    }
+
+    /* Connector Node on the Hilo Conductor */
+    h2::before {
       content: '';
       position: absolute;
-      bottom: 5px;
-      left: 0;
-      width: 100%;
-      height: 8px;
+      left: -2.05rem;
+      width: 0.6rem;
+      height: 0.6rem;
       background: var(--color-primary);
-      opacity: 0.2;
-      z-index: -1;
-      transform: skewX(-10deg);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      h2::before {
+        left: -1.55rem;
+        width: 0.5rem;
+        height: 0.5rem;
+      }
     }
 
     .contact-card {
       background: var(--color-background-off);
-      padding: 2.5rem;
+      padding: 3.5rem;
       border-radius: var(--radius-lg);
       border: 1px solid var(--color-border);
       display: grid;
-      gap: 2rem;
+      gap: 3rem;
+      box-shadow: var(--shadow-md);
+      transition: box-shadow 0.3s ease;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 992px) {
       .contact-card {
-        grid-template-columns: 3fr 2fr;
+        grid-template-columns: 1.1fr 0.9fr;
         align-items: center;
+        gap: 6rem;
       }
     }
 
     .lead {
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.5rem;
+      font-weight: 800;
       color: var(--color-text);
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--color-muted);
+      margin-bottom: 1.5rem;
+      max-width: 500px;
     }
 
     .highlight-text {
       color: var(--color-primary);
-      font-weight: 500;
-      margin-top: 1rem;
+      font-weight: 700;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .actions {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.5rem;
-      border-radius: var(--radius-md);
-      font-weight: 600;
+      gap: 0.75rem;
+      padding: 1rem 1.75rem;
+      border-radius: var(--radius-lg);
+      font-weight: 700;
       text-align: center;
-      transition: all 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1rem;
     }
 
     .btn-primary {
-      background: var(--gradient-primary);
-      color: white;
+      background: var(--color-primary);
+      color: #0f172a;
       border: none;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 4px 14px 0 rgba(var(--color-primary-rgb), 0.3);
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-      opacity: 0.95;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(var(--color-primary-rgb), 0.5);
+      background: #22c55e;
     }
 
     .btn-outline {
       background: transparent;
       border: 2px solid var(--color-border);
       color: var(--color-text);
+      font-weight: 600;
+      font-size: 0.9rem;
     }
 
     .btn-outline:hover {
       border-color: var(--color-primary);
       color: var(--color-primary);
-      background: var(--color-background);
+      background: rgba(var(--color-primary-rgb), 0.05);
+      transform: translateY(-2px);
     }
 
     .social-links {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
+    }
+
+    :global([data-theme="light"]) .contact-card {
+      background: var(--color-background);
+      box-shadow: var(--shadow-sm);
     }
   </style>
 </section>

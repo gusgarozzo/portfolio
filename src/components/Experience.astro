@@ -3,7 +3,7 @@ import jobs from "../data/experience.json";
 ---
 
 <section id="experience">
-  <h2>Experiencia</h2>
+  <h2><span class="number">02 /</span> Experiencia</h2>
   <div class="timeline">
     {
       jobs.map((job) => (
@@ -30,38 +30,72 @@ import jobs from "../data/experience.json";
 
   <style>
     section {
-      margin-bottom: 4rem;
+      padding: 4rem 0;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 2rem 0;
+      }
     }
 
     h2 {
-      font-size: 2rem;
-      margin-bottom: 2.5rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 3.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       position: relative;
-      display: inline-block;
     }
-    
-    h2::after {
+
+    h2 .number {
+      color: var(--color-primary);
+      opacity: 0.8;
+      font-family: var(--font-mono, monospace);
+    }
+
+    /* Connector Node on the Hilo Conductor */
+    h2::before {
       content: '';
       position: absolute;
-      bottom: 5px;
-      left: 0;
-      width: 100%;
-      height: 8px;
+      left: -2.05rem;
+      width: 0.6rem;
+      height: 0.6rem;
       background: var(--color-primary);
-      opacity: 0.2;
-      z-index: -1;
-      transform: skewX(-10deg);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      h2::before {
+        left: -1.55rem;
+        width: 0.5rem;
+        height: 0.5rem;
+      }
     }
 
     .timeline {
       position: relative;
-      padding-left: 2rem;
+      padding-left: 3rem;
       border-left: 2px solid var(--color-border);
+      margin-left: -1.8rem; /* Overlap with global line slightly or align */
+    }
+
+    @media (max-width: 768px) {
+      .timeline {
+        margin-left: -1.3rem;
+      }
     }
 
     .timeline-item {
       position: relative;
-      margin-bottom: 3rem;
+      margin-bottom: 5rem; /* More space between jobs */
     }
 
     .timeline-item:last-child {
@@ -70,14 +104,15 @@ import jobs from "../data/experience.json";
 
     .timeline-marker {
       position: absolute;
-      left: -2.6rem;
-      top: 0.5rem;
-      width: 1rem;
-      height: 1rem;
+      left: -3.65rem; /* Perfectly centered on line */
+      top: 0.4rem;
+      width: 1.25rem;
+      height: 1.25rem;
       border-radius: 50%;
       background: var(--color-background);
       border: 2px solid var(--color-primary);
       z-index: 1;
+      box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.2);
     }
 
     .timeline-marker::after {
@@ -86,43 +121,62 @@ import jobs from "../data/experience.json";
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 0.5rem;
-      height: 0.5rem;
+      width: 0.6rem;
+      height: 0.6rem;
       border-radius: 50%;
       background: var(--color-primary);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      opacity: 0.4;
+      transition: all 0.3s ease;
     }
 
     .timeline-item:hover .timeline-marker::after {
       opacity: 1;
+      transform: translate(-50%, -50%) scale(1.2);
     }
 
     .job-header {
-      margin-bottom: 1rem;
+      margin-bottom: 1.75rem;
     }
 
     h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: #f8fafc;
+      letter-spacing: -0.02em;
     }
 
     .meta {
-      font-size: 0.95rem;
-      color: var(--color-muted);
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      font-size: 1.05rem;
+      color: #94a3b8;
       font-weight: 500;
     }
 
     .company {
       color: var(--color-primary);
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
-    .company::after {
-      content: "•";
-      margin: 0 0.5rem;
-      color: var(--color-border);
+    .period {
+      color: #64748b;
+      font-size: 0.95rem;
+      font-family: var(--font-mono, monospace);
+    }
+
+    .period::before {
+      content: "[";
+      margin-right: 0.2rem;
+      opacity: 0.5;
+    }
+    
+    .period::after {
+      content: "]";
+      margin-left: 0.2rem;
+      opacity: 0.5;
     }
 
     .points {
@@ -133,17 +187,27 @@ import jobs from "../data/experience.json";
 
     .points li {
       position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.75rem;
-      color: var(--color-text);
-      font-size: 1rem;
+      padding-left: 2rem;
+      margin-bottom: 1.25rem;
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.7; /* Improved technical scanning */
+      max-width: 800px;
     }
 
     .points li::before {
-      content: "▹";
+      content: "→";
       position: absolute;
-      left: 0;
+      left: 0.2rem;
       color: var(--color-primary);
+      font-weight: bold;
+      opacity: 0.8;
     }
+    
+    :global([data-theme="light"]) h3 { color: #0f172a; }
+    :global([data-theme="light"]) .timeline { border-left-color: rgba(0, 0, 0, 0.05); }
+    :global([data-theme="light"]) .timeline-marker { background: #ffffff; }
+    :global([data-theme="light"]) .points li { color: #334155; }
+    :global([data-theme="light"]) .meta { color: #64748b; }
   </style>
 </section>
