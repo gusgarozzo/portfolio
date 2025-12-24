@@ -1,16 +1,14 @@
 ---
 import '../styles/global.css';
+import SEO from '../components/SEO.astro';
 
-const { title = "Gustavo Garozzo", description = "Backend Ssr. &mdash; Node.js, NestJS, APIs escalables" } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <SEO {title} {description} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">

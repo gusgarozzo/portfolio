@@ -1,0 +1,71 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: URL | string;
+  type?: string;
+}
+
+const {
+  title = "Gustavo Garozzo | Desarrollador Backend Node.js & NestJS",
+  description = "Backend Developer especializado en Node.js, NestJS y arquitectura de APIs escalables. 4+ años de experiencia construyendo sistemas robustos.",
+  image = "/logo.png", // Assuming logo.png is a good default preview
+  type = "website",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(image, Astro.site);
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Gustavo Garozzo",
+  "url": Astro.site?.toString(),
+  "jobTitle": "Backend Developer",
+  "sameAs": [
+    "https://linkedin.com/in/gusgarozzo",
+    "https://github.com/gusgarozzo"
+  ],
+  "description": description
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Gustavo Garozzo Portfolio",
+  "url": Astro.site?.toString()
+};
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageURL} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageURL} />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />

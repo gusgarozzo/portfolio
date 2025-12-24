@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gusgarozzo.com/sitemap-index.xml
