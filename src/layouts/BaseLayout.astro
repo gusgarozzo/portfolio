@@ -11,7 +11,7 @@ const { title, description } = Astro.props;
     <SEO {title} {description} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script is:inline>
       const theme = (() => {
@@ -150,8 +150,9 @@ const { title, description } = Astro.props;
       .orb {
         position: absolute;
         border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.4;
+        filter: blur(40px);
+        opacity: 0.3;
+        will-change: filter;
       }
 
       .orb-1 {
